@@ -2,7 +2,7 @@
 
 namespace waliko\Yoomoney;
 
-use WpOrg\Requests;
+use WpOrg\Requests\Requests;
 use waliko\Yoomoney\Exceptions;
 
 class Authorize
