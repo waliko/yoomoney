@@ -1,6 +1,6 @@
 <?php
 
-namespace Waliko\Exceptions;
+namespace waliko\Yoomoney;
 
 interface YooMoneyError {
     /* Basic class */

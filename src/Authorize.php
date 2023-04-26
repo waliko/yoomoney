@@ -1,9 +1,9 @@
 <?php
 
-namespace Waliko\Authorize;
+namespace waliko\Yoomoney;
 
 use WpOrg\Requests;
-use Waliko\Exceptions;
+use waliko\Yoomoney\Exceptions;
 
 class Authorize
 {
@@ -35,16 +35,16 @@ class Authorize
         if (isset($response->json()["error"])) {
             $error = $response->json()["error"];
             if ($error == "invalid_request") {
-                Waliko\Exceptions\InvalidRequest();
+                waliko\Yoomoney\Exceptions\InvalidRequest();
             } elseif ($error == "unauthorized_client") {
-                Waliko\Exceptions\UnauthorizedClient();
+                waliko\Yoomoney\Exceptions\UnauthorizedClient();
             } elseif ($error == "invalid_grant") {
-                Waliko\Exceptions\InvalidGrant();
+                waliko\Yoomoney\Exceptions\InvalidGrant();
             }
         }
 
         if ($response->json()['access_token'] == "") {
-            Waliko\Exceptions\EmptyToken();
+            waliko\Yoomoney\Exceptions\EmptyToken();
         }
 
         echo("Your access token: ");
