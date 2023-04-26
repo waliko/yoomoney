@@ -15,7 +15,7 @@ class Authorize
             'Content-Type' => 'application/x-www-form-urlencoded'
         );
 
-        $response = WpOrg\Requests\Requests::request("POST", $url, $headers);
+        $response = Requests::request("POST", $url, $headers);
 
         if ($response->status_code == 200) {
             echo("Visit this website and confirm the application authorization request:\n");
@@ -30,7 +30,7 @@ class Authorize
 
         $url = "https://yoomoney.ru/oauth/token?code=${code}&client_id=${client_id}&grant_type=authorization_code&redirect_uri=${redirect_uri}";
 
-        $response = WpOrg\Requests\Requests::request("POST", $url, $headers);
+        $response = Requests::request("POST", $url, $headers);
 
         if (isset($response->json()["error"])) {
             $error = $response->json()["error"];
