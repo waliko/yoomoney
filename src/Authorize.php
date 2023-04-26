@@ -15,7 +15,7 @@ class Authorize
             'Content-Type' => 'application/x-www-form-urlencoded'
         );
 
-        $response = Requests::request("POST", $url, $headers);
+        $response = Requests::post($url, $headers);
 
         if ($response->status_code == 200) {
             echo("Visit this website and confirm the application authorization request:\n");
@@ -24,16 +24,16 @@ class Authorize
 
         $code = readline("Enter redirected url (https://yourredirect_uri?code=XXXXXXXXXXXXX) or just code: ");
 
-        if($pos !== strpos($code,"code=")) {
-            $code = substr($code,$pos+5);
+        if(strpos($code,"code=") !== false) {
+            $code = substr($code,strpos($code,"code=")+5);
         }
 
         $url = "https://yoomoney.ru/oauth/token?code=${code}&client_id=${client_id}&grant_type=authorization_code&redirect_uri=${redirect_uri}";
 
-        $response = Requests::request("POST", $url, $headers);
+        $response = Requests::post($url, $headers);
 
-        if (isset($response->json()["error"])) {
-            $error = $response->json()["error"];
+        if (isset($response->decode_body()["error"])) {
+            $error = $response->decode_body()["error"];
             if ($error == "invalid_request") {
                 waliko\Yoomoney\Exceptions\InvalidRequest();
             } elseif ($error == "unauthorized_client") {
@@ -43,11 +43,11 @@ class Authorize
             }
         }
 
-        if ($response->json()['access_token'] == "") {
+        if ($response->decode_body()['access_token'] == "") {
             waliko\Yoomoney\Exceptions\EmptyToken();
         }
 
         echo("Your access token: ");
-        echo($response->json()['access_token']);
+        echo($response->decode_body()['access_token']);
     }
 }
