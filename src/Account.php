@@ -3,8 +3,8 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use waliko\Yoomoney\Exceptions;
 use waliko\Yoomoney\Account;
+use waliko\Yoomoney\Exceptions;
 
 class Account
 {
