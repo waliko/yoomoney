@@ -142,15 +142,11 @@ class OperationDetails
 
             $bonuses = array();
             foreach ( $data["digital_goods"]["bonus"] as $bonus) {
-                $digital_product = new DigitalBonus(serial=bonus["serial"],
-                                               secret=bonus["secret"],
-                                               )
+                $digital_product = new DigitalBonus($bonus["serial"],$bonus["secret"]);
                 $bonuses[] = $digital_product;
             }
 
-            $this->digital_goods = DigitalGood(products=products,
-                                             bonuses=bonuses
-                                             )
+            $this->digital_goods = new DigitalGood($products,$bonuses);
         }
     }
 

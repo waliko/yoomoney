@@ -3,7 +3,6 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use waliko\Yoomoney\Account;
 use waliko\Yoomoney\Exceptions;
 
 class Account
@@ -35,7 +34,7 @@ class Account
             $this->account_status = $data['account_status'];
             $this->account_type = $data['account_type'];
 
-            $this->balance_details = waliko\Yoomoney\Account\BalanceDetails();
+            $this->balance_details = new BalanceDetails();
             if (array_key_exists('balance_details',$data)) {
                 if (array_key_exists('available',$data['balance_details']))
                     $this->balance_details->available = (float)$data['balance_details']['available'];
@@ -60,7 +59,7 @@ class Account
             $this->cards_linked = array();
             if (array_key_exists('cards_linked',$data)) {
                 foreach ($data['cards_linked'] as $card_linked)  {
-                    $card = waliko\Yoomoney\Account\Card($card_linked['pan_fragment'], $card_linked['type']);
+                    $card = new Card($card_linked['pan_fragment'], $card_linked['type']);
                     $this->cards_linked[] = $card;
                 }
             }
