@@ -21,7 +21,7 @@ class Account
     public $balance_details;
     public $cards_linked;
 
-    public function __construct($base_url,$token,$method) {
+    public function __construct($base_url="",$token="",$method="") {
         $this->method = $method;
         $this->base_url = $base_url;
         $this->token = $token;
