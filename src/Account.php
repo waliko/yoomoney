@@ -64,7 +64,7 @@ class Account
                 }
             }
         } else {
-            new Exceptions\InvalidToken();
+            new Exceptions->InvalidToken();
         }
     }
 

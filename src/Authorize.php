@@ -35,11 +35,11 @@ class Authorize
         if (isset($response->decode_body()["error"])) {
             $error = $response->decode_body()["error"];
             if ($error == "invalid_request") {
-                new Exceptions\InvalidRequest();
+                new Exceptions->InvalidRequest();
             } elseif ($error == "unauthorized_client") {
-                new Exceptions\UnauthorizedClient();
+                new Exceptions->UnauthorizedClient();
             } elseif ($error == "invalid_grant") {
-                new Exceptions\InvalidGrant();
+                new Exceptions->InvalidGrant();
             }
         }
 

@@ -34,13 +34,13 @@ class History
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$from_date)) {
             $this->from_date = $from_date;
         } else {
-            new Exceptions\IllegalParamFromDate();
+            new Exceptions->IllegalParamFromDate();
         }
 
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$till_date)) {
             $this->till_date = $till_date;
         } else {
-            new Exceptions\IllegalParamTillDate();
+            new Exceptions=>IllegalParamTillDate();
         }
 
         $this->start_record = $start_record;
