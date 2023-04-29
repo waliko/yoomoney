@@ -59,7 +59,7 @@ class History
             elseif ($data["error"] == "illegal_param_label")
                 new Exceptions\IllegalParamLabel();
             elseif ($data["error"] == "illegal_param_from")
-                Exceptions\IllegalParamFromDate();
+                new Exceptions\IllegalParamFromDate();
             elseif ($data["error"] == "illegal_param_till")
                 new Exceptions\IllegalParamTillDate();
             else
