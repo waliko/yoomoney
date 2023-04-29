@@ -3,7 +3,7 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use Errors;
+use waliko\Yoomoney\Errors;
 
 class OperationDetails
 {

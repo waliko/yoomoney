@@ -53,7 +53,7 @@ class Client {
 
     public function operation_details($operation_id) {
         $method = "operation-details";
-        return OperationDetails($this->base_url,
+        return new OperationDetails($this->base_url,
                                 $this->token,
                                 $operation_id,
                                 $method

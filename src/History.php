@@ -3,8 +3,8 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use Operation;
-use Error;
+use waliko\Yoomoney\Operation;
+use waliko\Yoomoney\Errors;
 
 class History
 {
@@ -34,13 +34,13 @@ class History
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$from_date)) {
             $this->from_date = $from_date;
         } else {
-            new Error->IllegalParamFromDate();
+            Errors::IllegalParamFromDate();
         }
 
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$till_date)) {
             $this->till_date = $till_date;
         } else {
-            new Error->IllegalParamTillDate();
+            Errors::IllegalParamTillDate();
         }
 
         $this->start_record = $start_record;
@@ -51,19 +51,19 @@ class History
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_type")
-                new Error->IllegalParamType();
+                Errors::IllegalParamType();
             elseif ($data["error"] == "illegal_param_start_record")
-                new Error->IllegalParamStartRecord();
+                Errors::IllegalParamStartRecord();
             elseif ($data["error"] == "illegal_param_records")
-                new Error->IllegalParamRecords();
+                Errors::IllegalParamRecords();
             elseif ($data["error"] == "illegal_param_label")
-                new Error->IllegalParamLabel();
+                Errors::IllegalParamLabel();
             elseif ($data["error"] == "illegal_param_from")
-                new Error->IllegalParamFromDate();
+                Errors::IllegalParamFromDate();
             elseif ($data["error"] == "illegal_param_till")
-                new Error->IllegalParamTillDate();
+                Errors::IllegalParamTillDate();
             else
-                new Error->TechnicalError();
+                Errors::TechnicalError();
         }
 
         if (isset($data["next_record"])) {

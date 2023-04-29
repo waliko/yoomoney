@@ -4,14 +4,14 @@ namespace waliko\Yoomoney;
 
 class Operation
 {
-    public $opation_id;
+    public $operation_id;
     public $status;
     public $datetime;
     public $title;
-    public $parent_id;
+    public $pattern_id;
     public $direction;
     public $amount;
-    public $lable;
+    public $label;
     public $type;
 
     public function __construct($operation_id="",$status="",$datetime="",$title="",$pattern_id="",$direction="",$amount=0.0,$label="",$type="") {

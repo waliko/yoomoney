@@ -3,7 +3,7 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use waliko\Yoomoney\Exceptions;
+use waliko\Yoomoney\Errors;
 
 class Account
 {
@@ -64,7 +64,7 @@ class Account
                 }
             }
         } else {
-            new Exceptions->InvalidToken();
+            Errors::InvalidToken();
         }
     }
 
