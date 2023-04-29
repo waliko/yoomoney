@@ -2,7 +2,7 @@
 
 namespace waliko\Yoomoney;
 
-use WpOrg\Requests\Requests;
+//use WpOrg\Requests\Requests;
 use waliko\Yoomoney\Account;
 //use waliko\Yoomoney\Authorize;
 use waliko\Yoomoney\History;
