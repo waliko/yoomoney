@@ -35,16 +35,16 @@ class Authorize
         if (isset($response->decode_body()["error"])) {
             $error = $response->decode_body()["error"];
             if ($error == "invalid_request") {
-                waliko\Yoomoney\Exceptions\InvalidRequest();
+                Exceptions\InvalidRequest();
             } elseif ($error == "unauthorized_client") {
-                waliko\Yoomoney\Exceptions\UnauthorizedClient();
+                Exceptions\UnauthorizedClient();
             } elseif ($error == "invalid_grant") {
-                waliko\Yoomoney\Exceptions\InvalidGrant();
+                Exceptions\InvalidGrant();
             }
         }
 
         if ($response->decode_body()['access_token'] == "") {
-            waliko\Yoomoney\Exceptions\EmptyToken();
+            Exceptions\EmptyToken();
         }
 
         echo("Your access token: ");

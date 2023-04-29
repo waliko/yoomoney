@@ -34,13 +34,13 @@ class History
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$from_date)) {
             $this->from_date = $from_date;
         } else {
-            waliko\Yoomoney\Exceptions\IllegalParamFromDate();
+            Exceptions\IllegalParamFromDate();
         }
 
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$till_date)) {
             $this->till_date = $till_date;
         } else {
-            waliko\Yoomoney\Exceptions\IllegalParamTillDate();
+            Exceptions\IllegalParamTillDate();
         }
 
         $this->start_record = $start_record;
@@ -51,19 +51,19 @@ class History
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_type")
-                waliko\Yoomoney\Exceptions\IllegalParamType();
+                Exceptions\IllegalParamType();
             elseif ($data["error"] == "illegal_param_start_record")
-                waliko\Yoomoney\Exceptions\IllegalParamStartRecord();
+                Exceptions\IllegalParamStartRecord();
             elseif ($data["error"] == "illegal_param_records")
-                waliko\Yoomoney\Exceptions\IllegalParamRecords();
+                Exceptions\IllegalParamRecords();
             elseif ($data["error"] == "illegal_param_label")
-                waliko\Yoomoney\Exceptions\IllegalParamLabel();
+                Exceptions\IllegalParamLabel();
             elseif ($data["error"] == "illegal_param_from")
-                waliko\Yoomoney\Exceptions\IllegalParamFromDate();
+                Exceptions\IllegalParamFromDate();
             elseif ($data["error"] == "illegal_param_till")
-                waliko\Yoomoney\Exceptions\IllegalParamTillDate();
+                Exceptions\IllegalParamTillDate();
             else
-                waliko\Yoomoney\Exceptions\TechnicalError();
+                Exceptions\TechnicalError();
         }
 
         if (isset($data["next_record"])) {

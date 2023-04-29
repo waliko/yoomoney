@@ -46,9 +46,9 @@ class OperationDetails
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_operation_id")
-                waliko\Yoomoney\Exceptions\IllegalParamOperationId();
+                Exceptions\IllegalParamOperationId();
             else
-                waliko\Yoomoney\Exceptions\TechnicalError();
+                Exceptions\TechnicalError();
         }
 
         $this->status = "";

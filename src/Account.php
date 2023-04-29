@@ -64,7 +64,7 @@ class Account
                 }
             }
         } else {
-            waliko\Yoomoney\Exceptions\InvalidToken();
+            Exceptions\InvalidToken();
         }
     }
 
