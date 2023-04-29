@@ -2,7 +2,7 @@
 
 namespace waliko\Yoomoney;
 
-class Exceptions
+class Errors
 {
     /* Basic public function */
 

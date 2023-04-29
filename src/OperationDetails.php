@@ -3,7 +3,7 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use waliko\Yoomoney\Exceptions;
+use Errors;
 
 class OperationDetails
 {
@@ -46,9 +46,9 @@ class OperationDetails
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_operation_id")
-                new Exceptions\IllegalParamOperationId();
+                Errors::IllegalParamOperationId();
             else
-                new Exceptions\TechnicalError();
+                Errors::TechnicalError();
         }
 
         $this->status = "";

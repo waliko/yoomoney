@@ -24,6 +24,7 @@ class Quickpay
     public $need_address=false;
 
     public $response;
+    public $redirected_url;
     
     public function __construct(
             $receiver,
