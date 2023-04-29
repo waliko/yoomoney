@@ -46,9 +46,9 @@ class OperationDetails
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_operation_id")
-                Exceptions\IllegalParamOperationId();
+                new Exceptions\IllegalParamOperationId();
             else
-                Exceptions\TechnicalError();
+                new Exceptions\TechnicalError();
         }
 
         $this->status = "";

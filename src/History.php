@@ -34,13 +34,13 @@ class History
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$from_date)) {
             $this->from_date = $from_date;
         } else {
-            Exceptions\IllegalParamFromDate();
+            new Exceptions\IllegalParamFromDate();
         }
 
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$till_date)) {
             $this->till_date = $till_date;
         } else {
-            Exceptions\IllegalParamTillDate();
+            new Exceptions\IllegalParamTillDate();
         }
 
         $this->start_record = $start_record;
@@ -51,19 +51,19 @@ class History
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_type")
-                Exceptions\IllegalParamType();
+                new Exceptions\IllegalParamType();
             elseif ($data["error"] == "illegal_param_start_record")
-                Exceptions\IllegalParamStartRecord();
+                new Exceptions\IllegalParamStartRecord();
             elseif ($data["error"] == "illegal_param_records")
-                Exceptions\IllegalParamRecords();
+                new Exceptions\IllegalParamRecords();
             elseif ($data["error"] == "illegal_param_label")
-                Exceptions\IllegalParamLabel();
+                new Exceptions\IllegalParamLabel();
             elseif ($data["error"] == "illegal_param_from")
                 Exceptions\IllegalParamFromDate();
             elseif ($data["error"] == "illegal_param_till")
-                Exceptions\IllegalParamTillDate();
+                new Exceptions\IllegalParamTillDate();
             else
-                Exceptions\TechnicalError();
+                new Exceptions\TechnicalError();
         }
 
         if (isset($data["next_record"])) {

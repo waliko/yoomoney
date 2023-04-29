@@ -35,16 +35,16 @@ class Authorize
         if (isset($response->decode_body()["error"])) {
             $error = $response->decode_body()["error"];
             if ($error == "invalid_request") {
-                Exceptions\InvalidRequest();
+                new Exceptions\InvalidRequest();
             } elseif ($error == "unauthorized_client") {
-                Exceptions\UnauthorizedClient();
+                new Exceptions\UnauthorizedClient();
             } elseif ($error == "invalid_grant") {
-                Exceptions\InvalidGrant();
+                new Exceptions\InvalidGrant();
             }
         }
 
         if ($response->decode_body()['access_token'] == "") {
-            Exceptions\EmptyToken();
+            new Exceptions\EmptyToken();
         }
 
         echo("Your access token: ");
