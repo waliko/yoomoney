@@ -3,8 +3,8 @@
 namespace waliko\Yoomoney;
 
 use WpOrg\Requests\Requests;
-use waliko\Yoomoney\Operation;
-use waliko\Yoomoney\Exceptions;
+use Operation;
+use Error;
 
 class History
 {
@@ -34,13 +34,13 @@ class History
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$from_date)) {
             $this->from_date = $from_date;
         } else {
-            new Exceptions->IllegalParamFromDate();
+            new Error->IllegalParamFromDate();
         }
 
         if(preg_match('%^\d{4,4}-\d{2,2}-\d{2,2}T\d{2,2}:\d{2,2}:\d{2,2}$%',$till_date)) {
             $this->till_date = $till_date;
         } else {
-            new Exceptions=>IllegalParamTillDate();
+            new Error->IllegalParamTillDate();
         }
 
         $this->start_record = $start_record;
@@ -51,19 +51,19 @@ class History
 
         if (isset($data["error"])) {
             if ($data["error"] == "illegal_param_type")
-                new Exceptions\IllegalParamType();
+                new Error->IllegalParamType();
             elseif ($data["error"] == "illegal_param_start_record")
-                new Exceptions\IllegalParamStartRecord();
+                new Error->IllegalParamStartRecord();
             elseif ($data["error"] == "illegal_param_records")
-                new Exceptions\IllegalParamRecords();
+                new Error->IllegalParamRecords();
             elseif ($data["error"] == "illegal_param_label")
-                new Exceptions\IllegalParamLabel();
+                new Error->IllegalParamLabel();
             elseif ($data["error"] == "illegal_param_from")
-                new Exceptions\IllegalParamFromDate();
+                new Error->IllegalParamFromDate();
             elseif ($data["error"] == "illegal_param_till")
-                new Exceptions\IllegalParamTillDate();
+                new Error->IllegalParamTillDate();
             else
-                new Exceptions\TechnicalError();
+                new Error->TechnicalError();
         }
 
         if (isset($data["next_record"])) {
