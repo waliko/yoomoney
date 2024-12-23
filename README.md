@@ -1,2 +1,2 @@
 # yoomoney
-Packege for Yoomoney API
+Package for Yoomoney API
